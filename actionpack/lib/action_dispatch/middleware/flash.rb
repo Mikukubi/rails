@@ -257,6 +257,8 @@ module ActionDispatch
     end
 
     def call(env)
+      session = Request::Session.find(env)
+      session[:test]
       @app.call(env)
     ensure
       session    = Request::Session.find(env) || {}
